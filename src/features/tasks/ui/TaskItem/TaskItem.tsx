@@ -1,5 +1,6 @@
 import React, { FC, MouseEvent, useState } from 'react'
 
+import { errors, MAX_LENGTH } from '@model/index'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import SaveIcon from '@mui/icons-material/Save'
@@ -28,7 +29,7 @@ export const TaskItem: FC<TaskItemProps> = ({ completed, id, title }) => {
 
   const handleSave = () => {
     if (newTitle.trim().length === 0) {
-      setError('Task title is required')
+      setError(errors.TASK_TITLE_REQUIRED)
       return
     }
 
@@ -49,8 +50,8 @@ export const TaskItem: FC<TaskItemProps> = ({ completed, id, title }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value
 
-    if (inputValue.length > 30) {
-      setError('Task title cannot exceed 30 characters')
+    if (inputValue.length > MAX_LENGTH) {
+      setError(errors.TASK_LENGTH)
     } else {
       setNewTitle(inputValue)
       setError('')
@@ -74,7 +75,7 @@ export const TaskItem: FC<TaskItemProps> = ({ completed, id, title }) => {
           <TextField
             error={!!error}
             fullWidth
-            helperText={`${newTitle.length}/30`}
+            helperText={`${newTitle.length}/${MAX_LENGTH}`}
             onChange={handleChange}
             size='small'
             value={newTitle}
@@ -84,12 +85,10 @@ export const TaskItem: FC<TaskItemProps> = ({ completed, id, title }) => {
         )}
       </S.StyledTaskBox>
       <S.StyledActionBox>
-        <S.StyledIconButton onClick={handleEditSaveClick}>
-          {isEditing ? <SaveIcon fontSize='large' /> : <EditIcon fontSize='large' />}
-        </S.StyledIconButton>
+        <S.StyledIconButton onClick={handleEditSaveClick}>{isEditing ? <SaveIcon /> : <EditIcon />}</S.StyledIconButton>
 
-        <S.StyledIconButton aria-label='delete' onClick={handleDelete(id)}>
-          <DeleteIcon fontSize='large' />
+        <S.StyledIconButton onClick={handleDelete(id)}>
+          <DeleteIcon />
         </S.StyledIconButton>
       </S.StyledActionBox>
     </S.StyledListItem>

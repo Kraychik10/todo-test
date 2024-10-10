@@ -4,7 +4,7 @@ import { List } from '@mui/material'
 
 import { useTaskContext } from '@/app/providers/TaskContext'
 
-import { TaskItem } from '../'
+import { TaskItem } from '../TaskItem/TaskItem'
 
 export const TaskList: FC = () => {
   const { tasks } = useTaskContext()

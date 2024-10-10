@@ -1,3 +1,4 @@
+// src/shared/styles/theme.ts
 import { createTheme } from '@mui/material/styles'
 
 import { COLORS } from './colors'
@@ -36,6 +37,19 @@ export const theme = createTheme({
     },
     body1: {
       fontSize: 16,
+    },
+  },
+
+  components: {
+    MuiSvgIcon: {
+      styleOverrides: {
+        fontSizeLarge: {
+          fontSize: '2.5rem',
+        },
+      },
+      defaultProps: {
+        fontSize: 'large',
+      },
     },
   },
 })

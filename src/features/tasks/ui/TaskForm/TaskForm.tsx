@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
 
+import { errors, keyBoard, MAX_LENGTH } from '@model/index'
+
 import { useTaskContext } from '@/app/providers/TaskContext'
 import { StyledButton } from '@/shared/ui'
 
@@ -12,7 +14,10 @@ export const TaskForm: FC = () => {
 
   const handleSubmit = () => {
     if (!title.trim()) {
-      setError('Task title is required')
+      setError(errors.TASK_TITLE_REQUIRED)
+      setTimeout(() => {
+        setError('')
+      }, 2000)
       return
     } else {
       setError('')
@@ -24,8 +29,8 @@ export const TaskForm: FC = () => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value
 
-    if (inputValue.length > 30) {
-      setError('Task title cannot exceed 30 characters')
+    if (inputValue.length > MAX_LENGTH) {
+      setError(errors.TASK_LENGTH)
       setTimeout(() => {
         setError('')
       }, 2000)
@@ -38,7 +43,7 @@ export const TaskForm: FC = () => {
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const { key } = event
 
-    if (key === 'Enter') {
+    if (key === keyBoard.ENTER) {
       handleSubmit()
     }
   }
@@ -54,7 +59,7 @@ export const TaskForm: FC = () => {
         onKeyDown={handleKeyDown}
         value={title}
       />
-      <StyledButton color='error' onClick={handleSubmit} variant='contained'>
+      <StyledButton onClick={handleSubmit} variant='contained'>
         Add Task
       </StyledButton>
     </div>
