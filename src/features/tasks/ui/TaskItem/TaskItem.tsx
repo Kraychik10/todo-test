@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent, useState } from 'react'
+import { ChangeEvent, FC, MouseEvent, useState } from 'react'
 
 import { errors, MAX_LENGTH } from '@model/index'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -47,7 +47,7 @@ export const TaskItem: FC<TaskItemProps> = ({ completed, id, title }) => {
     isEditing ? handleSave() : handleEdit()
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value
 
     if (inputValue.length > MAX_LENGTH) {

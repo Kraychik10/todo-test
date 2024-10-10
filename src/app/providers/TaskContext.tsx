@@ -1,4 +1,4 @@
-import React, { createContext, FC, ReactNode, useContext, useState } from 'react'
+import { createContext, FC, ReactNode, useContext, useState } from 'react'
 
 interface Task {
   id: number

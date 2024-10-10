@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
+import { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
 
 import { errors, keyBoard, MAX_LENGTH } from '@model/index'
 
