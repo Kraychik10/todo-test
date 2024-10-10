@@ -5,6 +5,7 @@ export const StyledListItem = styled(ListItem)(({ theme }) => ({
   alignItems: 'start',
   minHeight: theme.spacing(10),
   padding: 0,
+  marginTop: theme.spacing(2),
 }))
 
 export const StyledCheckbox = styled(Checkbox)(({ theme }) => ({

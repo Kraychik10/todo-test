@@ -49,7 +49,7 @@ export const TaskForm: FC = () => {
   }
 
   return (
-    <div>
+    <>
       <StyledTextField
         error={!!error}
         fullWidth
@@ -60,6 +60,6 @@ export const TaskForm: FC = () => {
         value={title}
       />
       <StyledButton onClick={handleSubmit}>Add Task</StyledButton>
-    </div>
+    </>
   )
 }

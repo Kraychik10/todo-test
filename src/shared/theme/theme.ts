@@ -1,4 +1,3 @@
-// src/shared/styles/theme.ts
 import { createTheme } from '@mui/material/styles'
 
 import { COLORS } from './colors'
