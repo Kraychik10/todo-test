@@ -59,9 +59,7 @@ export const TaskForm: FC = () => {
         onKeyDown={handleKeyDown}
         value={title}
       />
-      <StyledButton onClick={handleSubmit} variant='contained'>
-        Add Task
-      </StyledButton>
+      <StyledButton onClick={handleSubmit}>Add Task</StyledButton>
     </div>
   )
 }

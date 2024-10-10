@@ -41,12 +41,12 @@ export const theme = createTheme({
   },
 
   components: {
-    MuiSvgIcon: {
-      styleOverrides: {
-        fontSizeLarge: {
-          fontSize: '2.5rem',
-        },
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
       },
+    },
+    MuiSvgIcon: {
       defaultProps: {
         fontSize: 'large',
       },
